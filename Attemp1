@@ -1,0 +1,56 @@
+import random
+user_cards = []
+dealer_cards = []
+
+total_user = sum(user_cards)
+total_dealer = sum(dealer_cards)
+
+def first_draw(num, lower=2, upper=11):
+	for i in range(num):
+		user_cards.append(random.randrange(upper))
+		dealer_cards.append(random.randrange(upper))
+	print "These are your cards %s" % user_cards
+	print "Dealer has %s" % dealer_cards
+
+def blackjack():
+	first_draw(2)
+	if total_user > 21 and total_dealer <= 21:
+		print "Boohoo, you lose"
+	elif total_user == 21 and (total_dealer < 21 or total_dealer > 21):
+		print "You win!"
+	elif total_user < 21 and total_dealer < 21:
+		print "Would you like to 'hit' or 'stay'?"
+		answer = raw_input("-")
+		if answer == "hit":
+			draw_card(1)
+		elif answer == "stay" and total_dealer >= total_user:
+			print "The dealer has %s" % total_dealer
+			print "You lost. boohoo"
+		else:
+			print "You have %s. You won!" % total_user
+	else:
+		print "Boohoo you lose"
+
+
+def draw_card(num, lower=2, upper=11):
+	for i in range(num):
+		if total_user < 21:
+			user_cards.append(random.randrange(upper))
+		if total_dealer < 16:
+			dealer_cards.append(random.randrange(upper))
+		print "Now you have this %s" % total_user
+		if total_user < 21:
+			print "Would you to 'hit' or 'stay'?"
+			answer = raw_input()
+			if answer == "hit":
+				draw_card(1)
+			else:
+				print "You have won!"
+
+
+print "Welcome to our blackjack table!"
+print "We will now draw cards"
+blackjack()
+
+
+#print total_dealer
