@@ -1,0 +1,106 @@
+import random
+
+player = []
+dealer = []
+
+def draw_card(): #draw one card at a time
+	player.append(random.randrange(2, 11))
+	if sum(dealer) < 21:
+		dealer.append(random.randrange(2, 11))
+
+
+def end_game():
+	print "***********"
+	total_user = sum(player)
+	total_dealer = sum(dealer)
+	if total_user <= 21 and total_dealer < 21 and total_user > total_dealer:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "You won!"
+		exit()
+	elif total_user <= 21 and total_dealer < 21 and total_user < total_dealer:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "Boohoo, you lost."
+		exit()
+	elif total_user <= 21 and total_dealer > 21:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "The dealer got busted! You won!"
+		exit()
+	elif total_user == total_dealer:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "Sorry dude, the dealer won this round."
+		exit()
+	elif total_user == 21 and total_dealer != 21:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "Woohoo! You won."
+		exit()
+	elif total_user != 21 and total_dealer == 21:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "Sorry dude, the dealer won this round."
+		exit()
+	elif total_user > 21 and total_dealer < 21:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "You busted. The dealer won this round."
+		exit()
+	elif total_user > 21 and total_dealer > 21:
+		print "The dealer had these cards: %s" % dealer
+		print "The total for his hand is %s" %total_dealer
+		print "Your cards were: %s" % player
+		print "Your total for your hand is: %s" % total_user
+		print "Well you both lose!"
+		exit()
+	
+def blackjack(): #gameplay
+	draw_card()
+	draw_card()
+	hand = 0
+	for i in player:
+		player_total = sum(player)
+	for i in dealer:
+		dealer_total = sum(dealer)
+	print "Here are your cards: %s" % player
+	print "Your total is: %s" % player_total
+	print "The dealer reveals this card: %s" % dealer[0]
+	print "Would you like to 'hit' or 'stay'?"
+	answer = raw_input("Type hit or stay:  ")
+	while answer != 'stay':
+		draw_card()
+		for i in player:
+			player_total = sum(player)
+		for i in dealer:
+			dealer_total = sum(dealer)
+		print "Here are your new cards: %s" % player
+		print "Your NEW total is: %s" % player_total
+		if player_total >= 21:
+			end_game()
+		elif player_total <= 21:
+			print "Would you like to 'hit' or 'stay'?"
+		answer = raw_input()
+	else: 
+		end_game()
+
+
+print "Welcome to our blackjack table!"
+print "Please, let's see your first two cards."
+blackjack()
+
