@@ -13,60 +13,32 @@ def end_game():
 	print "***********"
 	total_user = sum(player)
 	total_dealer = sum(dealer)
+	print "The dealer had these cards: %s" % dealer
+	print "The total for his hand is %s" %total_dealer
+	print "Your cards were: %s" % player
+	print "Your total for your hand is: %s" % total_user
 	if total_user <= 21 and total_dealer < 21 and total_user > total_dealer:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "You won!"
 		exit()
 	elif total_user <= 21 and total_dealer < 21 and total_user < total_dealer:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "Boohoo, you lost."
 		exit()
 	elif total_user <= 21 and total_dealer > 21:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "The dealer got busted! You won!"
 		exit()
 	elif total_user == total_dealer:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "Sorry dude, the dealer won this round."
 		exit()
 	elif total_user == 21 and total_dealer != 21:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "Woohoo! You won."
 		exit()
 	elif total_user != 21 and total_dealer == 21:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "Sorry dude, the dealer won this round."
 		exit()
 	elif total_user > 21 and total_dealer < 21:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "You busted. The dealer won this round."
 		exit()
 	elif total_user > 21 and total_dealer > 21:
-		print "The dealer had these cards: %s" % dealer
-		print "The total for his hand is %s" %total_dealer
-		print "Your cards were: %s" % player
-		print "Your total for your hand is: %s" % total_user
 		print "Well you both lose!"
 		exit()
 	
